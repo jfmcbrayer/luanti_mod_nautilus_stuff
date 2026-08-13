@@ -54,3 +54,21 @@ minetest.register_craft({
     recipe = "nautilus:ice_with_big_cold_shell",
     cooktime = 3.0,
 })
+
+minetest.register_tool("nautilus:nautilus_trident", {
+        description = "Nautilus Trident",
+        inventory_image = "nautilus_trident.png",
+        wield_image = "nautilus_trident.png",
+        wield_scale = {x = 1, y = 2, z = 1},
+        stack_max = 1,
+        range = 6.0,
+        tool_capabilities = {
+            full_punch_interval = 0.7,
+            max_drop_level = 1,
+            groupcaps = {
+		crumbly = {times={[1]=1.20, [2]=0.60, [3]=0.30}, uses=360, maxlevel=3},
+            },
+            damage_groups = {fleshy = 12},
+            punch_attack_uses = 720,
+    },
+})
