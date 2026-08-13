@@ -1,5 +1,5 @@
 minetest.register_node("nautilus:ice_with_cold_shell", {
-	description = "Ice with Cold Shell",
+	description = "Ice with Frozen Nautilus Shell",
 	tiles = {"default_ice.png^cold_shell.png"},
 	groups = {cracky = 3, cools_lava = 1, slippery = 3},
 	drop = "nautilus:ice_with_cold_shell",
@@ -7,7 +7,7 @@ minetest.register_node("nautilus:ice_with_cold_shell", {
 })
 
 minetest.register_node("nautilus:ice_with_big_cold_shell", {
-	description = "Ice with Big Cold Shell",
+	description = "Ice with Frozen Titan Nautilus Shell",
 	tiles = {"default_ice.png^big_cold_nautilus.png"},
 	groups = {cracky = 3, cools_lava = 1, slippery = 3},
 	drop = "nautilus:ice_with_big_cold_shell",
