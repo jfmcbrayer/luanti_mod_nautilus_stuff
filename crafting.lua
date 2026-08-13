@@ -61,7 +61,7 @@ minetest.register_tool("nautilus:nautilus_trident", {
         wield_image = "nautilus_trident.png",
         wield_scale = {x = 1, y = 2, z = 1},
         stack_max = 1,
-        range = 6.0,
+        range = 8.0,
         tool_capabilities = {
             full_punch_interval = 0.7,
             max_drop_level = 1,
@@ -70,5 +70,8 @@ minetest.register_tool("nautilus:nautilus_trident", {
             },
             damage_groups = {fleshy = 12},
             punch_attack_uses = 720,
-    },
+        },
+        on_place = function(itemstack, user, pointed_thing)
+		if user and user:get_breath() < 10 then user:set_breath(10) end
+	end
 })
