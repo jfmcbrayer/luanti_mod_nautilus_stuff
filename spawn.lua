@@ -1,4 +1,4 @@
-minetest.register_decoration({
+core.register_decoration({
         deco_type = "simple",
         place_on = {"default:ice", "default:cave_ice", "default:snow",
                     "default:snowblock", "default:dirt_with_snow",
@@ -14,7 +14,7 @@ minetest.register_decoration({
         decoration = "nautilus:ice_with_cold_shell"
 })
 
-minetest.register_decoration({
+core.register_decoration({
         deco_type = "simple",
         place_on = {"default:ice", "default:cave_ice", "default:snow",
                     "default:snowblock", "default:dirt_with_snow",
