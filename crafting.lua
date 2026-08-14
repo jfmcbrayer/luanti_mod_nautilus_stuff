@@ -75,3 +75,12 @@ minetest.register_tool("nautilus:nautilus_trident", {
 		if user and user:get_breath() < 10 then user:set_breath(10) end
 	end
 })
+
+core.register_craft({
+        output = "nautilus:nautilus_trident",
+        recipe = {
+            {"", "nautilus:shell_shard", "nautilus:shell_shard"},
+            {"", "default:obsidian_shard", "nautilus:shell_shard"},
+            {"nautilus:big_nautilus_shell", "", ""},
+        }
+})
