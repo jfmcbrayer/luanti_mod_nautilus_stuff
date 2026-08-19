@@ -1,31 +1,35 @@
-core.register_decoration({
-        deco_type = "simple",
-        place_on = {"default:ice", "default:cave_ice", "default:snow",
-                    "default:snowblock", "default:dirt_with_snow",
-                    "default:permafrost_with_stones",
-                    "default:permafrost_with_moss"},
-        sidelen = 16,
-        fill_ratio = 0.002,
-        place_offset_y=-1,
-        flags = "place_center_z,place_center_x,force_placement",
-        -- biomes = {"icesheet", "icesheet_ocean", "icesheet_under", "tundra", "tundra_highland", "tundra_under", "tundra_beach", "tundra_ocean", "taiga", "taiga_under", "taiga_ocean", "snowy_grassland", "snowy_grassland_under", "snowy_grassland_ocean"},
-        y_min = -31000,
-        y_max = 31000,
-        decoration = "nautilus:ice_with_cold_shell"
-})
+core.register_on_generated(function(vmanip, minp, maxp, blockseed)
+        local vmanip2 = core.get_mapgen_object("voxelmanip")
+        local data = vmanip2:get_data()
+        local c_ice = core.get_content_id("default:ice")
+        local c_cice = core.get_content_id("default:cave_ice")
+        local c_shell = core.get_content_id("nautilus:ice_with_cold_shell")
+        local c_big_shell = core.get_content_id("nautilus:ice_with_big_cold_shell")
 
-core.register_decoration({
-        deco_type = "simple",
-        place_on = {"default:ice", "default:cave_ice", "default:snow",
-                    "default:snowblock", "default:dirt_with_snow",
-                    "default:permafrost_with_stones",
-                    "default:permafrost_with_moss"},
-        sidelen = 16,
-        fill_ratio = 0.001,
-        place_offset_y=-1,
-        flags = "place_center_z,place_center_x,force_placement",
-        -- biomes = {"icesheet", "icesheet_ocean", "icesheet_under", "tundra", "tundra_highland", "tundra_under", "tundra_beach", "tundra_ocean", "taiga", "taiga_under", "taiga_ocean", "snowy_grassland", "snowy_grassland_under", "snowy_grassland_ocean"},
-        y_min = -31000,
-        y_max = 31000,
-        decoration = "nautilus:ice_with_big_cold_shell"
-})
+        local min, max = vmanip2:get_emerged_area()
+        local area = VoxelArea:new{
+            MinEdge = min,
+            MaxEdge = max
+        }
+
+        for z = min.z, max.z do
+            for y = min.y, max.y do
+                for x = min.x, max.x do
+                    -- vi, voxel index, is a common variable name here
+                    local vi = area:index(x, y, z)
+                    if data[vi] == c_ice or data[vi] == c_cice then
+                        local rv = math.random()
+                        -- core.debug("rv is", rv)
+                        if rv <= 0.002 then
+                            data[vi] = c_big_shell
+                            core.debug("big shell placed at", x, y, z)
+                        elseif rv <= 0.008 then
+                            data[vi] = c_shell
+                            core.debug("small shell placed at", x, y, z)
+                        end
+                    end
+                end
+            end
+        end
+        vmanip2:set_data(data)
+end)
