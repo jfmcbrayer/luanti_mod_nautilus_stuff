@@ -20,12 +20,12 @@ core.register_on_generated(function(vmanip, minp, maxp, blockseed)
                     if data[vi] == c_ice or data[vi] == c_cice then
                         local rv = math.random()
                         -- core.debug("rv is", rv)
-                        if rv <= 0.002 then
+                        if rv <= 0.0002 then
                             data[vi] = c_big_shell
-                            core.debug("big shell placed at", x, y, z)
-                        elseif rv <= 0.008 then
+                            -- core.debug("big shell placed at", x, y, z)
+                        elseif rv <= 0.0008 then
                             data[vi] = c_shell
-                            core.debug("small shell placed at", x, y, z)
+                            -- core.debug("small shell placed at", x, y, z)
                         end
                     end
                 end
