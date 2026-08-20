@@ -30,7 +30,7 @@ core.register_craftitem("nautilus:shell_shard", {
 core.register_craftitem("nautilus:big_cold_shell", {
                                 description = "Frozen Titan Nautilus shell",
                                 inventory_image = "big_cold_nautilus.png",
-                                wield_image = "cold_shell.png"
+                                wield_image = "big_cold_nautilus.png"
 })
 core.register_craftitem("nautilus:big_nautilus_shell", {
                                 description = "Titan Nautilus shell",
