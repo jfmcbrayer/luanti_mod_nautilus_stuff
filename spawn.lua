@@ -3,8 +3,8 @@ core.register_on_generated(function(vmanip, minp, maxp, blockseed)
         local data = vmanip2:get_data()
         local c_ice = core.get_content_id("default:ice")
         local c_cice = core.get_content_id("default:cave_ice")
-        local c_shell = core.get_content_id("nautilus:ice_with_cold_shell")
-        local c_big_shell = core.get_content_id("nautilus:ice_with_big_cold_shell")
+        local c_shell = core.get_content_id("nautilus_stuff:ice_with_cold_shell")
+        local c_big_shell = core.get_content_id("nautilus_stuff:ice_with_big_cold_shell")
 
         local min, max = vmanip2:get_emerged_area()
         local area = VoxelArea:new{

@@ -1,25 +1,25 @@
 -- Nodes and craft items 
 -----------------------------------------------------------
 -- Nodes
-core.register_node("nautilus:ice_with_cold_shell", {
+core.register_node("nautilus_stuff:ice_with_cold_shell", {
 	description = "Ice with Frozen Nautilus Shell",
 	tiles = {"default_ice.png^cold_shell.png"},
 	groups = {cracky = 3, cools_lava = 1, slippery = 3},
-	drop = "nautilus:ice_with_cold_shell",
+	drop = "nautilus_stuff:ice_with_cold_shell",
         paramtype = "light",
 	sounds = default.node_sound_ice_defaults(),
 })
 
-core.register_node("nautilus:ice_with_big_cold_shell", {
+core.register_node("nautilus_stuff:ice_with_big_cold_shell", {
 	description = "Ice with Frozen Titan Nautilus Shell",
 	tiles = {"default_ice.png^big_cold_nautilus.png"},
 	groups = {cracky = 3, cools_lava = 1, slippery = 3},
-	drop = "nautilus:ice_with_big_cold_shell",
+	drop = "nautilus_stuff:ice_with_big_cold_shell",
         paramtype = "light",
 	sounds = default.node_sound_ice_defaults(),
 })
 
-core.register_node("nautilus:nautilus_block", {
+core.register_node("nautilus_stuff:nautilus_block", {
                        description = "Nautilus block",
                        tiles = {"nautilus_block.png"},
                        groups = {cracky = 3},
@@ -27,30 +27,30 @@ core.register_node("nautilus:nautilus_block", {
 })
 
 -- Craft items 
-core.register_craftitem("nautilus:cold_shell", {
+core.register_craftitem("nautilus_stuff:cold_shell", {
                                 description = "Frozen Nautilus shell",
                                 inventory_image = "cold_shell.png",
                                 wield_image = "cold_shell.png"
                                 
 })
-core.register_craftitem("nautilus:shell_shard", {
+core.register_craftitem("nautilus_stuff:shell_shard", {
                                 description = "Ancient shell shard",
                                 inventory_image = "shell_shard.png",
                                 wield_image = "shell_shard.png"
 })
-core.register_craftitem("nautilus:big_cold_shell", {
+core.register_craftitem("nautilus_stuff:big_cold_shell", {
                                 description = "Frozen Titan Nautilus shell",
                                 inventory_image = "big_cold_nautilus.png",
                                 wield_image = "big_cold_nautilus.png"
 })
-core.register_craftitem("nautilus:big_nautilus_shell", {
+core.register_craftitem("nautilus_stuff:big_nautilus_shell", {
                                 description = "Titan Nautilus shell",
                                 inventory_image = "big_nautilus.png",
                                 wield_image = "big_nautilus.png"
 })
 
 -- Tools
-core.register_tool("nautilus:nautilus_trident", {
+core.register_tool("nautilus_stuff:nautilus_trident", {
         description = "Nautilus Trident",
         inventory_image = "nautilus_trident.png",
         wield_image = "nautilus_trident.png",
@@ -71,7 +71,7 @@ core.register_tool("nautilus:nautilus_trident", {
 	end
 })
 
-core.register_tool("nautilus:nautilus_mace", {
+core.register_tool("nautilus_stuff:nautilus_mace", {
                        description = "Nautilus Mace",
                        inventory_image = "nautilus_mace.png",
                        wield_image = "nautilus_mace.png",
@@ -90,46 +90,46 @@ core.register_tool("nautilus:nautilus_mace", {
 -- Recipes
 core.register_craft({
     type = "cooking",
-    output = "nautilus:shell_shard",
-    recipe = "nautilus:ice_with_cold_shell",
+    output = "nautilus_stuff:shell_shard",
+    recipe = "nautilus_stuff:ice_with_cold_shell",
     cooktime = 3.0,
 })
 core.register_craft({
     type = "cooking",
-    output = "nautilus:shell_shard",
-    recipe = "nautilus:ice_with_cold_shell",
+    output = "nautilus_stuff:shell_shard",
+    recipe = "nautilus_stuff:ice_with_cold_shell",
     cooktime = 3.0,
 })
 core.register_craft({
     type = "cooking",
-    output = "nautilus:big_nautilus_shell",
-    recipe = "nautilus:ice_with_big_cold_shell",
+    output = "nautilus_stuff:big_nautilus_shell",
+    recipe = "nautilus_stuff:ice_with_big_cold_shell",
     cooktime = 3.0,
 })
 
 core.register_craft({
-        output = "nautilus:nautilus_block",
+        output = "nautilus_stuff:nautilus_block",
         recipe = {
-            {"nautilus:big_nautilus_shell", "nautilus:big_nautilus_shell", "nautilus:big_nautilus_shell"},
-            {"nautilus:big_nautilus_shell", "nautilus:big_nautilus_shell", "nautilus:big_nautilus_shell"},
-            {"nautilus:big_nautilus_shell", "nautilus:big_nautilus_shell", "nautilus:big_nautilus_shell"},
+            {"nautilus_stuff:big_nautilus_shell", "nautilus_stuff:big_nautilus_shell", "nautilus_stuff:big_nautilus_shell"},
+            {"nautilus_stuff:big_nautilus_shell", "nautilus_stuff:big_nautilus_shell", "nautilus_stuff:big_nautilus_shell"},
+            {"nautilus_stuff:big_nautilus_shell", "nautilus_stuff:big_nautilus_shell", "nautilus_stuff:big_nautilus_shell"},
         }
 })
 
 core.register_craft({
-        output = "nautilus:nautilus_trident",
+        output = "nautilus_stuff:nautilus_trident",
         recipe = {
-            {"", "nautilus:shell_shard", "nautilus:shell_shard"},
-            {"", "default:obsidian_shard", "nautilus:shell_shard"},
-            {"nautilus:big_nautilus_shell", "", ""},
+            {"", "nautilus_stuff:shell_shard", "nautilus_stuff:shell_shard"},
+            {"", "default:obsidian_shard", "nautilus_stuff:shell_shard"},
+            {"nautilus_stuff:big_nautilus_shell", "", ""},
         }
 })
 
 core.register_craft({
-        output = "nautilus:nautilus_mace",
+        output = "nautilus_stuff:nautilus_mace",
         recipe = {
-            {"nautilus:big_nautilus_shell", "nautilus:nautilus_block", "nautilus:big_nautilus_shell"},
+            {"nautilus_stuff:big_nautilus_shell", "nautilus_stuff:nautilus_block", "nautilus_stuff:big_nautilus_shell"},
             {"",                            "default:obsidian_shard",  ""},
-            {"",                            "nautilus:shell_shard",    ""},
+            {"",                            "nautilus_stuff:shell_shard",    ""},
         }
 })
