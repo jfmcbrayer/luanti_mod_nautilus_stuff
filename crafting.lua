@@ -64,7 +64,7 @@ core.register_tool("nautilus_stuff:nautilus_trident", {
 		crumbly = {times={[1]=1.20, [2]=0.60, [3]=0.30}, uses=360, maxlevel=3},
             },
             damage_groups = {fleshy = 12},
-            punch_attack_uses = 720,
+            punch_attack_uses = 360,
         },
         on_place = function(itemstack, user, pointed_thing)
 		if user and user:get_breath() < 10 then user:set_breath(10) end
@@ -83,7 +83,7 @@ core.register_tool("nautilus_stuff:nautilus_mace", {
                                cracky = {times={[1]=1.20, [2]=0.60, [3]=0.30}, uses=360, maxlevel=3},
                            },
                            damage_groups = { fleshy = 15 },
-                           punch_attack_uses = 720,
+                           punch_attack_uses = 360,
                        },
 })
 
