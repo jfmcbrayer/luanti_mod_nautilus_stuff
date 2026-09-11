@@ -54,7 +54,7 @@ core.register_tool("nautilus_stuff:nautilus_trident", {
         description = "Nautilus Trident",
         inventory_image = "nautilus_trident.png",
         wield_image = "nautilus_trident.png",
-        wield_scale = {x = 1, y = 2, z = 1},
+        wield_scale = {x = 1, y = 2.25, z = 1.25},
         stack_max = 1,
         range = 8.0,
         tool_capabilities = {
@@ -75,6 +75,7 @@ core.register_tool("nautilus_stuff:nautilus_mace", {
                        description = "Nautilus Mace",
                        inventory_image = "nautilus_mace.png",
                        wield_image = "nautilus_mace.png",
+                       wield_scale = {x = 2.25, y = 1.75, z = 1.75},
                        stack_max = 1,
                        tool_capabilities = {
                            full_punch_interval = 0.7,
