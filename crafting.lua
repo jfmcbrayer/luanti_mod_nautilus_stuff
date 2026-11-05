@@ -117,7 +117,12 @@ ice_if_eligible = function(pos, user)
 end
 
 ice_shell = function(itemstack, user, pointed_thing)
-    local pos = vector.round(user:get_pos())
+    local pos = user:get_pos()
+    if pos.y < 0 then
+        pos = vector.round({x=pos.x, y=math.ceil(pos.y), z=pos.z})
+    else
+        pos = vector.round(pos)
+    end 
     user:set_pos(pos)
 
     for dx = -1, 1 do
