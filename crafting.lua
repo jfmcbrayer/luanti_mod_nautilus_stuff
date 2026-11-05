@@ -26,6 +26,17 @@ core.register_node("nautilus_stuff:nautilus_block", {
                        paramtype = "light"
 })
 
+core.register_node("nautilus_stuff:dry_ice", {
+    description = "Dry ice",
+    tiles = { "default_ice.png^[opacity:238^[brighten"},
+    drawtype = "glasstype",
+    use_texture_alpha = "blend",
+    groups = {oddly_breakable_by_hand = 3, cracky = 1, slippery = 1},
+    paramtype = "light",
+    drop = { max_items = 0},
+    sounds = default.node_sound_ice_defaults(),
+})
+
 -- Craft items 
 core.register_craftitem("nautilus_stuff:cold_shell", {
                                 description = "Frozen Nautilus shell",
