@@ -26,6 +26,25 @@ core.register_node("nautilus_stuff:nautilus_block", {
                        paramtype = "light"
 })
 
+evaporate = function(pos)
+    if core.get_node(pos).name == "nautilus_stuff:dry_ice" then
+        core.set_node(pos, {name = "air"})
+	core.add_particlespawner({
+		amount = 8,
+		time = 0.001,
+		minpos = vector.subtract(pos, {x=0.5, y=0.5, z=0.5}),
+		maxpos = vector.add(pos, {x=0.5, y=1, z=0.5}),
+		minvel = vector.new(-0.5, 2, -0.5),
+		maxvel = vector.new(0.5, 0, 0.5),
+		minacc = vector.new(0, 0, 0),
+		maxacc = vector.new(0, 4, 0),
+		minsize = 0,
+		maxsize = 0,
+		node = {name = "nautilus_stuff:dry_ice"},
+	})
+    end
+end
+        
 core.register_node("nautilus_stuff:dry_ice", {
     description = "Dry ice",
     tiles = { "default_ice.png^[opacity:238^[brighten"},
@@ -35,6 +54,9 @@ core.register_node("nautilus_stuff:dry_ice", {
     paramtype = "light",
     drop = { max_items = 0},
     sounds = default.node_sound_ice_defaults(),
+    on_construct = function(pos)
+        core.after(30 + math.random(-4, 4), evaporate, pos)
+    end
 })
 
 -- Craft items 
