@@ -61,6 +61,13 @@ core.register_craftitem("nautilus_stuff:big_nautilus_shell", {
 })
 
 -- Tools
+rebreather = function(itemstack, user, pointed_thing)
+    if user and user:get_breath() < 10 then
+        user:set_breath(10)
+    end
+    return itemstack
+end
+
 core.register_tool("nautilus_stuff:nautilus_trident", {
         description = "Nautilus Trident",
         inventory_image = "nautilus_trident.png",
@@ -77,10 +84,35 @@ core.register_tool("nautilus_stuff:nautilus_trident", {
             damage_groups = {fleshy = 12},
             punch_attack_uses = 360,
         },
-        on_place = function(itemstack, user, pointed_thing)
-		if user and user:get_breath() < 10 then user:set_breath(10) end
-	end
+        on_place = rebreather,
+        on_secondary_use = rebreather
 })
+
+ice_if_eligible = function(pos, user)
+    if core.get_node(pos).name == "air" and not core.is_protected(pos, user:get_player_name()) then
+        core.set_node(pos, {name = "nautilus_stuff:dry_ice"})
+    end
+end
+
+ice_shell = function(itemstack, user, pointed_thing)
+    local pos = vector.round(user:get_pos())
+    user:set_pos(pos)
+
+    for dx = -1, 1 do
+        for dz = -1, 1 do
+            if (math.abs(dx) == 1 and dz == 0) or (math.abs(dz) == 1 and dx == 0) then
+                local ipos = {x=pos.x+dx, y=pos.y, z=pos.z+dz}
+                ice_if_eligible(ipos, user)
+                local ipos2 = {x=pos.x+dx, y=pos.y + 1, z=pos.z+dz}
+                ice_if_eligible(ipos2, user)
+            end
+        end
+    end
+    local cap = {x=pos.x, y=pos.y + 2, z=pos.z}
+    ice_if_eligible(cap, user)
+
+    return itemstack
+end
 
 core.register_tool("nautilus_stuff:nautilus_mace", {
                        description = "Nautilus Mace",
@@ -97,6 +129,8 @@ core.register_tool("nautilus_stuff:nautilus_mace", {
                            damage_groups = { fleshy = 15 },
                            punch_attack_uses = 360,
                        },
+                       on_place = ice_shell,
+                       on_secondary_use = ice_shell
 })
 
 -- Recipes
